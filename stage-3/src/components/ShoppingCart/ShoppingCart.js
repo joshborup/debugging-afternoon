@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 class ShoppingCart extends Component {
 
     render() {
+        console.log(JSON.stringify(this.props.products))
         let shoppingCartDisplay = this.props.shoppingCart.map((element, index) => {
             return (
                 <div className="shopping-cart-product-container" key={index}>
@@ -33,8 +34,9 @@ class ShoppingCart extends Component {
 function mapStateToProps(state) {
     console.log(state);
     return {
-        shoppingCart: state.shoppingCart
+        shoppingCart: state.shoppingCart,
+        products: state.products
     };
 }
 
-export default connect(mapStateToProps)(ShoppingCart);
+export default connect(mapStateToProps, {removeFromShoppingCart})(ShoppingCart);
